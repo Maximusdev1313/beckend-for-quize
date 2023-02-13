@@ -9,8 +9,9 @@ class Class(models.Model):
     def __str__(self):
         return self.class_name
 
-class Quizes(models.Model):
-    quizes = models.ForeignKey(Class, on_delete=models.CASCADE, related_name='quizes')
+class Quiz(models.Model):
+    quizzes = models.ForeignKey(Class, on_delete=models.CASCADE, related_name='quizzes')
+
     question_number = models.CharField(max_length=10, null=True, blank=True)
     question_title = models.CharField(max_length=200, null=True, blank=True)
     hidden = models.BooleanField(default=True)
@@ -18,8 +19,9 @@ class Quizes(models.Model):
     def __str__(self):
         return self.question_title
 
-class Quizes(models.Model):
-    variants = models.ForeignKey(Quizes, on_delete=models.CASCADE, related_name='variants')
+class Variant(models.Model):
+    variants = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name='variants')
+    
     variant_name = models.CharField(max_length=10, null=True, blank=True)
     variant_answer = models.CharField(max_length=200, null=True, blank=True)
     right = models.BooleanField(default=True)
