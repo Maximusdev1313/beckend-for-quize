@@ -11,6 +11,9 @@ class QuizViewSet(ModelViewSet):
     queryset = Quiz.objects.all()
     serializer_class = QuizSerializer
 
+class ConditionViewSet(ModelViewSet):
+    queryset = Condition.objects.all()
+    serializer_class = ConditionSerializer
 class VariantViewSet(ModelViewSet):
     queryset = Variant.objects.all()
     serializer_class = VariantSerializer

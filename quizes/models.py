@@ -9,16 +9,24 @@ class Class(models.Model):
     def __str__(self):
         return self.class_name
 
+
 class Quiz(models.Model):
     quizzes = models.ForeignKey(Class, on_delete=models.CASCADE, related_name='quizzes')
 
     question_number = models.CharField(max_length=10, null=True, blank=True)
     question_title = models.CharField(max_length=200, null=True, blank=True)
-    hidden = models.BooleanField(default=True)
 
     def __str__(self):
         return self.question_title
 
+class Condition(models.Model):
+    condition = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name='condition')
+    
+    worth = models.CharField(max_length=20, null=True, blank=True)
+    hidden = models.BooleanField(default=False)
+
+
+  
 class Variant(models.Model):
     variants = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name='variants')
     
