@@ -6,7 +6,7 @@ from .models import *
 class VariantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Variant
-        fields = ['id','variant_name', 'variant_answer', 'right','variants']
+        fields = ['id', 'variant_answer', 'right','variants']
 class ConditionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Condition
@@ -16,7 +16,7 @@ class QuizSerializer(serializers.ModelSerializer):
     condition = ConditionSerializer(many=True, read_only=True)
     class Meta:
         model = Quiz
-        fields = ['id','question_number', 'question_title', 'quizzes', 'condition', 'variants']
+        fields = ['id', 'question_title', 'quizzes', 'condition', 'variants']
 
 class ClassSerializer(serializers.ModelSerializer):
     quizzes = QuizSerializer(many=True, read_only=True)
