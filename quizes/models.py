@@ -4,6 +4,7 @@ from django.utils.text import slugify
 
 
 class Class(models.Model):
+    id = models.CharField(primary_key=True, max_length=50)
     class_name = models.CharField(max_length=50, null=True, blank=True)
     teacher_name = models.CharField(max_length=50)
     def __str__(self):
@@ -12,7 +13,7 @@ class Class(models.Model):
 
 class Quiz(models.Model):
     quizzes = models.ForeignKey(Class, on_delete=models.CASCADE, related_name='quizzes')
-
+    id = models.CharField(primary_key=True, max_length=50)
     question_title = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
